@@ -12,12 +12,13 @@ function setup(){
   a = 360 / ((sound.duration()) * fr);
   b = a;
   frameRate(fr);
-  background(0);
+  
 }
 
 
 
 function draw(){
+  background(0);
  
 
   // let spectrum = fft.analyze();
@@ -28,14 +29,15 @@ function draw(){
   //   let h = -height + map(spectrum[i], 0, 255, height, 0);
   //   rect(x, height, width / spectrum.length, h )
   // }
-  noFill();
-  var spectrumA = fft.analyze();
-  var spectrumB = spectrumA.reverse();
 
-  push();
-  translate(width / 2, height / 2);
-  fill('#FF1111');
-  rect(0,0,40,40);
+  // noFill();
+  // var spectrumA = fft.analyze();
+  // var spectrumB = spectrumA.reverse();
+
+  // push();
+  // translate(width / 2, height / 2);
+  // fill('#FF1111');
+  // rect(0,0,40,40);
   // rotate(radians(a))
   // for(let i =0; i < spectrumB.lenght; i++){
   //   strokeWeight(0.08 * spectrumB[i]);
@@ -44,22 +46,22 @@ function draw(){
 
   // }
 
-  pop();
+  // pop();
 
   
 
-  // let waveform = fft.waveform();
-  // noFill();
-  // beginShape();
-  // stroke(255);
-  // for (let i = 0; i < width; i++){
-  //   let x = map(waveform[i], -1, 1, 0, width);
-  //   let y = map(i, 0, waveform.length, 0, height); 
-  //   vertex(x,y);
-  // }
-  // endShape();
+  let waveform = fft.waveform();
+  noFill();
+  beginShape();
+  stroke(255);
+  for (let i = 0; i < width; i++){
+    let x = map(waveform[i], -1, 1, 0, width);
+    let y = map(i, 0, waveform.length, 0, height); 
+    point(x,y);
+  }
+  endShape();
 
-  text('tap to play', windowWidth / 2 , 20);
+  // text('tap to play', windowWidth / 2 , 20);
 }
 
 
